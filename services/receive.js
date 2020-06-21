@@ -217,6 +217,7 @@ module.exports = class Receive {
 
   sendMessage(response, delay = 0) {
     // Check if there is delay in the response
+    console.log("YQTEST : message sent"+response);
     if ("delay" in response) {
       delay = response["delay"];
       delete response["delay"];

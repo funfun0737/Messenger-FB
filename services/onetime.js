@@ -17,6 +17,7 @@ const oneYearToken = null;
 const timeStamp = null;
 module.exports = class onetime {
     static sendOneTimeNoti() {
+        console.log("YQTEST");
         return {
             "message": {
                 "attachment": {
