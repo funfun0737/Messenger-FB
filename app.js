@@ -42,13 +42,13 @@ app.set("view engine", "ejs");
 
 // Respond with index file when a GET request is made to the homepage
 app.get("/", function(_req, res) {
+  console.log("YQTget0");
   res.render("index");
 });
 
 // Adds support for GET requests to our webhook
 app.get("/webhook", (req, res) => {
-
-  //HZTest
+console.log("YQTget1");
   // Parse the query params
   let mode = req.query["hub.mode"];
   let token = req.query["hub.verify_token"];
@@ -70,6 +70,7 @@ app.get("/webhook", (req, res) => {
 
 // Creates the endpoint for your webhook
 app.post("/webhook", (req, res) => {
+  console.log("YQTEST post" + req.body);
   let body = req.body;
 
   // Checks if this is an event from a page subscription
@@ -165,6 +166,8 @@ app.post("/webhook", (req, res) => {
 
 // Set up your App's Messenger Profile
 app.get("/profile", (req, res) => {
+  console.log("YQTget2");
+
   let token = req.query["verify_token"];
   let mode = req.query["mode"];
 
@@ -176,6 +179,7 @@ app.get("/profile", (req, res) => {
 
   // Checks if a token and mode is in the query string of the request
   if (mode && token) {
+    console.log("YQTEST" + token);
     if (token === config.verifyToken) {
       if (mode == "webhook" || mode == "all") {
         Profile.setWebhook();
