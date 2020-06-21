@@ -13,8 +13,6 @@
 // Imports dependencies
 const Response = require("./response"),
     i18n = require("../i18n.config");
-const oneYearToken = null;
-const timeStamp = null;
 module.exports = class onetime {
     static sendOneTimeNoti() {
         return {
@@ -30,14 +28,16 @@ module.exports = class onetime {
     }
 
     static followup(event) {
-        this.payload = event.payload;
-        this.oneYearToken = event.option.one_time_notif_token;
-        this.timeStamp = event.timeStamp;
-        if (true) {
+        let unused = true;
+        let payload = event.payload;
+        let oneYearToken = event.option.one_time_notif_token;
+
+        if (unused) {
             console.log("YQTEST followup");
+            unused = false;
             return {
                 "recipient": {
-                    "one_time_notif_token": "oneYearToken"
+                    "one_time_notif_token": oneYearToken
                 },
                 "message": {
                     "text": "avaiable!"

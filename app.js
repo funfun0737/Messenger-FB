@@ -219,6 +219,7 @@ app.get("/profile", (req, res) => {
       }
       res.status(200).end();
     } else {
+      console.log("YQTEST 403");
       // Responds with '403 Forbidden' if verify tokens do not match
       res.sendStatus(403);
     }
