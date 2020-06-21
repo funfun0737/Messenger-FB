@@ -17,16 +17,13 @@ const oneYearToken = null;
 const timeStamp = null;
 module.exports = class onetime {
     static sendOneTimeNoti() {
-        console.log("YQTEST");
         return {
-            "message": {
-                "attachment": {
-                    "type": "template",
-                    "payload": {
-                        "template_type": "one_time_notif_req",
-                        "title": "when counselor is available",
-                        "payload": "NOTIFY_ME"
-                    }
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "one_time_notif_req",
+                    "title": "when counselor is available",
+                    "payload": "NOTIFY_ME"
                 }
             }
         }
