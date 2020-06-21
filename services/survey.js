@@ -42,32 +42,68 @@ module.exports = class Survey {
     return response;
   }
 
+  static startASurvey(){
+    return Response.genQuickReply("Let's take a survey!", [
+      {
+        title: "Take a survey",
+        payload: "SURVEY_0_YES"
+      },
+      {
+        title: "Maybe later",
+        payload: "SURVEY_0_NO"
+      }
+    ]);
+  }
+
   static handlePayload(payload) {
-    let response;
+    let mark0 = payload.indexOf("_", 0);
+    let mark1 = payload.indexOf("_", mark0+1);
 
-    switch (payload) {
-      case "CSAT_GOOD":
-        response = Response.genText(i18n.__("survey.positive"));
-        break;
+    let questionNumber = payload.substring(mark0+1, mark1);
+    let choice = payload.substring(mark1+1);
 
-      case "CSAT_AVERAGE":
-        response = Response.genText(i18n.__("survey.neutral"));
-        break;
-
-      case "CSAT_BAD":
-        response = Response.genQuickReply(i18n.__("survey.negative"), [
-          {
-            title: i18n.__("menu.help"),
-            payload: "CARE_HELP"
-          }
-        ]);
-        break;
-
-      case "CSAT_SUGGESTION":
-        response = Response.genText(i18n.__("survey.suggestion"));
-        break;
+    switch (questionNumber) {
+      case "0":
+        switch (choice) {
+          case "YES":
+            return Response.genQuickReply("What is your gender?", [
+              {
+                title: "Male",
+                payload: "SURVEY_1_MALE"
+              },
+              {
+                title: "Female",
+                payload: "SURVEY_1_FEMALE"
+              }]);
+          case "NO":
+            return Response.genText("Thank you, bye.");
+          default: break;
+        }
+      case "1":
+        switch (choice) {
+          case "MALE":
+            return Response.genQuickReply("Are you a gay?", [
+              {
+                title: "Yes",
+                payload: "SURVEY_2_YES"
+              },
+              {
+                title: "No",
+                payload: "SURVEY_2_NO"
+              }]);
+          case "FEMALE":
+            return Response.genQuickReply("Are you a lesbian?", [
+              {
+                title: "Yes",
+                payload: "SURVEY_3_YES"
+              },
+              {
+                title: "No",
+                payload: "SURVEY_3_NO"
+              }]);
+          default: break;
+        }
+      default: break;
     }
-
-    return response;
   }
 };

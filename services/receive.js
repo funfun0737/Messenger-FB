@@ -85,10 +85,10 @@ module.exports = class Receive {
       message.includes("start over")
     ) {
       response = Response.genNuxMessage(this.user);
+    } else if (message.includes("take a survey")) {
+      response = Survey.startASurvey();
     } else if (Number(message)) {
       response = Order.handlePayload("ORDER_NUMBER");
-    } else if (message.includes("#")) {
-      response = Survey.handlePayload("CSAT_SUGGESTION");
     } else if (message.includes(i18n.__("care.help").toLowerCase())) {
       let care = new Care(this.user, this.webhookEvent);
       response = care.handlePayload("CARE_HELP");
@@ -183,35 +183,8 @@ module.exports = class Receive {
       payload === "GITHUB"
     ) {
       response = Response.genNuxMessage(this.user);
-    } else if (payload.includes("CURATION") || payload.includes("COUPON")) {
-      let curation = new Curation(this.user, this.webhookEvent);
-      response = curation.handlePayload(payload);
-    } else if (payload.includes("CARE")) {
-      let care = new Care(this.user, this.webhookEvent);
-      response = care.handlePayload(payload);
-    } else if (payload.includes("ORDER")) {
-      response = Order.handlePayload(payload);
-    } else if (payload.includes("CSAT")) {
+    } if (payload.startsWith("SURVEY")) {
       response = Survey.handlePayload(payload);
-    } else if (payload.includes("CHAT-PLUGIN")) {
-      response = [
-        Response.genText(i18n.__("chat_plugin.prompt")),
-        Response.genText(i18n.__("get_started.guidance")),
-        Response.genQuickReply(i18n.__("get_started.help"), [
-          {
-            title: i18n.__("care.order"),
-            payload: "CARE_ORDER"
-          },
-          {
-            title: i18n.__("care.billing"),
-            payload: "CARE_BILLING"
-          },
-          {
-            title: i18n.__("care.other"),
-            payload: "CARE_OTHER"
-          }
-        ])
-      ];
     } else {
       response = {
         text: `This is a default postback message for payload: ${payload}!`
@@ -225,16 +198,7 @@ module.exports = class Receive {
     let welcomeMessage = i18n.__("get_started.welcome") + " " +
       i18n.__("get_started.survey");
 
-    let response = Response.genQuickReply(welcomeMessage, [
-      {
-        title: i18n.__("menu.takeSurvey"),
-        payload: "TAKE_SURVEY_YES"
-      },
-      {
-        title: i18n.__("menu.maybeLater"),
-        payload: "TAKE_SURVEY_NO"
-      }
-    ]);
+    let response = Survey.startASurvey();
 
     let requestBody = {
       recipient: {
