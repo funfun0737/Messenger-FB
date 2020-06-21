@@ -47,6 +47,10 @@ module.exports = class Receive {
         responses = this.handlePostback();
       } else if (event.referral) {
         responses = this.handleReferral();
+      }else if(this.webhookEvent.type == 'one_time_notif_req' && this.webhoookEvent.payload == 'NOTIFY_ME') {
+        console.log("YQTEDT identify");
+        responses = OneTime.followup(this.webhookEvent);
+        console.log(response);
       }
     } catch (error) {
       console.error(error);
@@ -88,10 +92,6 @@ module.exports = class Receive {
       response = Response.genNuxMessage(this.user);
     } else if(message.includes("counselor")){
       response = OneTime.sendOneTimeNoti();
-    } else if(this.webhookEvent.type == 'one_time_notif_req' && this.webhoookEvent.payload == 'NOTIFY_ME'){
-      console.log("YQTEDT identify");
-      response = OneTime.followup(this.webhookEvent);
-      console.log(response);
     }else if (message.includes("take a survey")) {
       response = Survey.startASurvey();
     } else if (Number(message)) {
