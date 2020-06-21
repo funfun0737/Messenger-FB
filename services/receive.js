@@ -11,12 +11,13 @@
 "use strict";
 
 const Curation = require("./curation"),
-  Order = require("./order"),
-  Response = require("./response"),
-  Care = require("./care"),
-  Survey = require("./survey"),
-  GraphAPi = require("./graph-api"),
-  i18n = require("../i18n.config");
+    Order = require("./order"),
+    Response = require("./response"),
+    Care = require("./care"),
+    OneTime = require("./onetime"),
+    Survey = require("./survey"),
+    GraphAPi = require("./graph-api"),
+    i18n = require("../i18n.config");
 
 module.exports = class Receive {
   constructor(user, webhookEvent) {
@@ -69,8 +70,8 @@ module.exports = class Receive {
   // Handles messages events with text
   handleTextMessage() {
     console.log(
-      "Received text:",
-      `${this.webhookEvent.message.text} for ${this.user.psid}`
+        "Received text:",
+        `${this.webhookEvent.message.text} for ${this.user.psid}`
     );
 
     // check greeting is here and is confident
@@ -81,27 +82,15 @@ module.exports = class Receive {
     let response;
 
     if (
-      (greeting && greeting.confidence > 0.8) ||
-      message.includes("start over")
+        (greeting && greeting.confidence > 0.8) ||
+        message.includes("start over")
     ) {
       response = Response.genNuxMessage(this.user);
-    }else if(message.includes("counselor")){
-      response = {
-        "recipient": {
-          "id":"<PSID>"
-        },
-        "message": {
-          "attachment": {
-            "type":"template",
-            "payload": {
-              "template_type":"one_time_notif_req",
-              "title":"when counselor is aviable, notify you",
-              "payload":"notify me"
-            }
-          }
-        }
-      }
-    } else if (message.includes("survey")) {
+    } else if(message.includes("counselor")){
+      response = OneTime.sendOneTimeNoti();
+    } else if(this.webhookEvent.type == 'one_time_notif_req' && this.webhoookEvent.payload == 'NOTIFY_ME'){
+      response = OneTime.followup(this.webhookEvent);
+    }else if (message.includes("take a survey")) {
       response = Survey.startASurvey();
     } else if (Number(message)) {
       response = Order.handlePayload("ORDER_NUMBER");
@@ -111,9 +100,9 @@ module.exports = class Receive {
     } else {
       response = [
         Response.genText(
-          i18n.__("fallback.any", {
-            message: this.webhookEvent.message.text
-          })
+            i18n.__("fallback.any", {
+              message: this.webhookEvent.message.text
+            })
         ),
         Response.genText(i18n.__("get_started.guidance")),
         Response.genQuickReply(i18n.__("get_started.help"), [
@@ -194,9 +183,9 @@ module.exports = class Receive {
 
     // Set the response based on the payload
     if (
-      payload === "GET_STARTED" ||
-      payload === "DEVDOCS" ||
-      payload === "GITHUB"
+        payload === "GET_STARTED" ||
+        payload === "DEVDOCS" ||
+        payload === "GITHUB"
     ) {
       response = Response.genNuxMessage(this.user);
     } if (payload.startsWith("SURVEY")) {
@@ -212,7 +201,7 @@ module.exports = class Receive {
 
   handlePrivateReply(type,object_id) {
     let welcomeMessage = i18n.__("get_started.welcome") + " " +
-      i18n.__("get_started.survey");
+        i18n.__("get_started.survey");
 
     let response = Survey.startASurvey();
 
