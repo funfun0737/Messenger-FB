@@ -85,7 +85,23 @@ module.exports = class Receive {
       message.includes("start over")
     ) {
       response = Response.genNuxMessage(this.user);
-    } else if (message.includes("take a survey")) {
+    }else if(message.includes("counselor")){
+      response = {
+        "recipient": {
+          "id":"<PSID>"
+        },
+        "message": {
+          "attachment": {
+            "type":"template",
+            "payload": {
+              "template_type":"one_time_notif_req",
+              "title":"when counselor is aviable, notify you",
+              "payload":"notify me"
+            }
+          }
+        }
+      }
+    } else if (message.includes("survey")) {
       response = Survey.startASurvey();
     } else if (Number(message)) {
       response = Order.handlePayload("ORDER_NUMBER");
