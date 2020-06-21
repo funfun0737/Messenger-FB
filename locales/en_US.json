@@ -8,12 +8,15 @@
     "help": "Talk to an agent",
     "suggestion": "Outfit suggestions",
     "shop": "Shop now",
-    "start_over": "Start over"
+    "start_over": "Start over",
+    "takeSurvey": "Sure, take a survey",
+    "maybeLater": "Maybe later"
   },
   "get_started": {
-    "welcome": "Hi {{userFirstName}}! Welcome !.",
+    "welcome": "Hi {{userFirstName}}! Welcome to Who Am I where you'll find your true self.",
     "guidance": "At any time, use the menu below to navigate through the features",
-    "help": "What we can do to help you today?"
+    "help": "What we can do to help you today?",
+    "survey": "Do you want to take a survey?",
   },
   "leadgen": {
     "promo": "Hi {{userFirstName}}, finding great outfits is now easier and more convenient.",
