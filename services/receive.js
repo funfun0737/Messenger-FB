@@ -223,17 +223,16 @@ module.exports = class Receive {
 
   handlePrivateReply(type,object_id) {
     let welcomeMessage = i18n.__("get_started.welcome") + " " +
-      i18n.__("get_started.guidance") + ". " +
-      i18n.__("get_started.help");
+      i18n.__("get_started.survey");
 
     let response = Response.genQuickReply(welcomeMessage, [
       {
-        title: i18n.__("menu.suggestion"),
-        payload: "CURATION"
+        title: i18n.__("menu.takeSurvey"),
+        payload: "TAKE_SURVEY_YES"
       },
       {
-        title: i18n.__("menu.help"),
-        payload: "CARE_HELP"
+        title: i18n.__("menu.maybeLater"),
+        payload: "TAKE_SURVEY_NO"
       }
     ]);
 
