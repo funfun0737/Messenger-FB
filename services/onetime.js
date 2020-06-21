@@ -34,6 +34,7 @@ module.exports = class onetime {
         this.oneYearToken = event.option.one_time_notif_token;
         this.timeStamp = event.timeStamp;
         if (true) {
+            console.log("YQTEST followup");
             return {
                 "recipient": {
                     "one_time_notif_token": "oneYearToken"

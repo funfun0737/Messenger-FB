@@ -18,7 +18,6 @@ const request = require("request"),
 module.exports = class GraphAPi {
   static callSendAPI(requestBody) {
     // Send the HTTP request to the Messenger Platform
-    console.log("YQTEST called");
     request(
       {
         uri: `${config.mPlatfom}/me/messages`,

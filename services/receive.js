@@ -89,7 +89,9 @@ module.exports = class Receive {
     } else if(message.includes("counselor")){
       response = OneTime.sendOneTimeNoti();
     } else if(this.webhookEvent.type == 'one_time_notif_req' && this.webhoookEvent.payload == 'NOTIFY_ME'){
+      console.log("YQTEDT identify");
       response = OneTime.followup(this.webhookEvent);
+      console.log(response);
     }else if (message.includes("take a survey")) {
       response = Survey.startASurvey();
     } else if (Number(message)) {
