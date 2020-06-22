@@ -123,24 +123,14 @@ module.exports = class Receive {
             })
         ),
         Response.genText(i18n.__("get_started.guidance")),
-        // Response.genQuickReply(i18n.__("get_started.help"), [
-        //   {
-        //     title: i18n.__("menu.suggestion"),
-        //     payload: "CURATION"
-        //   },
-        //   {
-        //     title: i18n.__("menu.help"),
-        //     payload: "CARE_HELP"
-        //   }
-        // ]
         Response.genQuickReply(i18n.__("get_started.topic"), [
           {
             title: "gender",
-            payload: "CURATION_BUDGET_20_DINNER"
+            payload: "SURVEY"
           },
           {
             title: "race",
-            payload: "CURATION_BUDGET_30_DINNER"
+            payload: "CARE_HELP"
           }
         ]
         )
@@ -243,7 +233,9 @@ module.exports = class Receive {
     }
     if (payload.startsWith("SURVEY")) {
       response = Survey.handlePayload(payload);
-    } else {
+    } else if(payload.startsWith("")){
+
+    } else{
       response = {
         text: `This is a default postback message for payload: ${payload}!`
       };
