@@ -56,31 +56,7 @@ module.exports = class Survey {
   }
 
   static handlePayload(payload) {
-    // let response;
-    //   switch (payload) {
-    //     case "ANATO":
-    //       response = [
-    //           Response.genImageTemplate(
-    //           `${config.appUrl}/order.png`,
-    //           i18n.__("order.status")
-    //       ),
-    //         Response.genQuickReply("What is your gender assigned at birth?", [
-    //                     {
-    //                       title: "Male",
-    //                       payload: "SURVEY_1_MALE"
-    //                     },
-    //                     {
-    //                       title: "Intersex",
-    //                       payload: "SURVEY_1_INTER"
-    //                     },
-    //                     {
-    //                       title: "Female",
-    //                       payload: "SURVEY_1_FEMALE"
-    //                     }])
-    //       ]
-    //       break;
-    //
-    //   }
+    console.log("YQTEST"+payload);
 
     let mark0 = payload.indexOf("_", 0);
     let mark1 = payload.indexOf("_", mark0+1);

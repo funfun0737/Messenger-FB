@@ -231,7 +231,7 @@ module.exports = class Receive {
     }
     if (payload == "SURVEY") {
       console.log(payload);
-      response = Survey.handlePayload(payload);
+      response = Survey.startASurvey();
     } else{
       response = {
         text: `This is a default postback message for payload: ${payload}!`
