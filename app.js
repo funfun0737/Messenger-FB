@@ -169,8 +169,6 @@ app.post("/webhook", (req, res) => {
 
 // Set up your App's Messenger Profile
 app.get("/profile", (req, res) => {
-  console.log("YQTget2");
-
   let token = req.query["verify_token"];
   let mode = req.query["mode"];
 

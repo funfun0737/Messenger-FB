@@ -3,10 +3,10 @@
     "greeting": "Welcome  {{user_first_name}}! Click get started to enjoy our sample automated messaging experience. If you want to build a similar one visit https://fb.me/get-sample-oc"
   },
   "menu": {
-    "support": "Customer Support",
+    "support": "Support",
     "order": "Order updates",
-    "help": "Talk to an agent",
-    "suggestion": "Outfit suggestions",
+    "help": "Talk to an counselor",
+    "suggestion": "Topic",
     "website": "Go to our website",
     "start_over": "Start over",
     "takeSurvey": "Take a survey"

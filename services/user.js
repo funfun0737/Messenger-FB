@@ -12,6 +12,7 @@
 
 module.exports = class User {
   constructor(psid) {
+    console.log("YQTEST" +psid);
     this.psid = psid;
     this.firstName = "";
     this.lastName = "";
