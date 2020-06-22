@@ -18,6 +18,7 @@ const Curation = require("./curation"),
     Survey = require("./survey"),
     GraphAPi = require("./graph-api"),
     i18n = require("../i18n.config");
+const oneTimeToken = null;
 
 module.exports = class Receive {
   constructor(user, webhookEvent) {
@@ -50,23 +51,29 @@ module.exports = class Receive {
       }else if(event.optin.type == 'one_time_notif_req' && event.optin.payload == 'NOTIFY_ME') {
         // responses = OneTime.followup(event);
         // console.log(responses);
-          let oneYearToken = event.optin.one_time_notif_token;
-          this.sendMessage("ok, we will notify you",0);
-
-          responses = {
-            "recipient": {
-              "one_time_notif_token": oneYearToken
-            },
-            "message": {
-              "text": "avaiable!"
-            }
-          }
-        }
+        this.oneTimeToken = event.optin.one_time_notif_token;
+        let requestBody = {
+          recipient: {
+            id: this.user.psid
+          },
+          message: "OK!"
+        };
+        setTimeout(() => GraphAPi.callSendAPI(requestBody), delay);
+        //
+        // responses = {
+        //     "recipient": {
+        //       "one_time_notif_token": oneYearToken
+        //     },
+        //     "message": {
+        //       "text": "avaiable!"
+        //     }
+        //   }
+        // }
+      }
     } catch (error) {
       console.error(error);
       responses = {
-        text: `An error has occured: '${error}'. We have been notified and \
-        will fix the issue shortly!`
+        text: `An error has occured: '${error}'. We have been notified and will fix the issue shortly!`
       };
     }
 
