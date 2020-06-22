@@ -95,6 +95,7 @@ module.exports = class Receive {
     let greeting = this.firstEntity(this.webhookEvent.message.nlp, "greetings");
 
     let message = this.webhookEvent.message.text.trim().toLowerCase();
+    console.log("HZTest message "+message);
 
     let response;
 
