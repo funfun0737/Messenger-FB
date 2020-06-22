@@ -113,7 +113,7 @@ module.exports = class Receive {
       response = care.handlePayload("CARE_HELP");
     } else if (message.includes("yuki")) {
       console.log("HZTesst yuki");
-      setTimeout(() => GraphAPi.callSendAPI(this.sendPassThread(this.user.psid)));
+      setTimeout(() => this.sendPassThread(this.user.psid));
     } else {
       response = [
         Response.genText(
