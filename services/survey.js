@@ -56,84 +56,75 @@ module.exports = class Survey {
   }
 
   static handlePayload(payload) {
-    let response;
-      switch (payload) {
-        case "ANATO":
-          response = [
+    // let response;
+    //   switch (payload) {
+    //     case "ANATO":
+    //       response = [
+    //           Response.genImageTemplate(
+    //           `${config.appUrl}/order.png`,
+    //           i18n.__("order.status")
+    //       ),
+    //         Response.genQuickReply("What is your gender assigned at birth?", [
+    //                     {
+    //                       title: "Male",
+    //                       payload: "SURVEY_1_MALE"
+    //                     },
+    //                     {
+    //                       title: "Intersex",
+    //                       payload: "SURVEY_1_INTER"
+    //                     },
+    //                     {
+    //                       title: "Female",
+    //                       payload: "SURVEY_1_FEMALE"
+    //                     }])
+    //       ]
+    //       break;
+    //
+    //   }
+
+    let mark0 = payload.indexOf("_", 0);
+    let mark1 = payload.indexOf("_", mark0+1);
+
+    let questionNumber = payload.substring(mark0+1, mark1);
+    let choice = payload.substring(mark1+1);
+
+    switch (questionNumber) {
+      case "0":
+        switch (choice) {
+          case "YES":
+            return Response.genQuickReply("What is your gender assigned at birth?", [
+              {
+                title: "Male",
+                payload: "SURVEY_1_MALE"
+              },
+              {
+                title: "Intersex",
+                payload: "SURVEY_1_INTER"
+              },
+              {
+                title: "Female",
+                payload: "SURVEY_1_FEMALE"
+              }]);
+          case "NO":
+            return Response.genText("Thank you, bye.");
+          default: break;
+        }
+      case "1":
+          return [
               Response.genImageTemplate(
-              `${config.appUrl}/order.png`,
-              i18n.__("order.status")
-          ),
-            Response.genQuickReply("What is your gender assigned at birth?", [
-                        {
-                          title: "Male",
-                          payload: "SURVEY_1_MALE"
-                        },
-                        {
-                          title: "Intersex",
-                          payload: "SURVEY_1_INTER"
-                        },
-                        {
-                          title: "Female",
-                          payload: "SURVEY_1_FEMALE"
-                        }])
-          ]
-          break;
+            `${config.appUrl}/order.png`,
+            i18n.__("order.status")
+              ),
+              Response.genQuickReply("Rank your female-ness ", [
+            {
+              title: "0",
+              payload: "SURVEY_2_0"
+            },
+            {
+              title: "1",
+              payload: "SURVEY_2_1"
+            }])];
 
-      }
-
-    // let mark0 = payload.indexOf("_", 0);
-    // let mark1 = payload.indexOf("_", mark0+1);
-    //
-    // let questionNumber = payload.substring(mark0+1, mark1);
-    // let choice = payload.substring(mark1+1);
-    //
-    // switch (questionNumber) {
-    //   case "0":
-    //     switch (choice) {
-    //       case "YES":
-    //         return Response.genQuickReply("What is your gender assigned at birth?", [
-    //           {
-    //             title: "Male",
-    //             payload: "SURVEY_1_MALE"
-    //           },
-    //           {
-    //             title: "Intersex",
-    //             payload: "SURVEY_1_INTER"
-    //           },
-    //           {
-    //             title: "Female",
-    //             payload: "SURVEY_1_FEMALE"
-    //           }]);
-    //       case "NO":
-    //         return Response.genText("Thank you, bye.");
-    //       default: break;
-    //     }
-    //   case "1":
-    //     switch (choice) {
-    //       case "MALE":
-    //         return Response.genQuickReply("Are you a gay?", [
-    //           {
-    //             title: "Yes",
-    //             payload: "SURVEY_2_YES"
-    //           },
-    //           {
-    //             title: "No",
-    //             payload: "SURVEY_2_NO"
-    //           }]);
-    //       case "FEMALE":
-    //         return Response.genQuickReply("Are you a lesbian?", [
-    //           {
-    //             title: "Yes",
-    //             payload: "SURVEY_3_YES"
-    //           },
-    //           {
-    //             title: "No",
-    //             payload: "SURVEY_3_NO"
-    //           }]);
-    //       default: break;
-    //     }
-    //   default: break;
-    // }
+    }
   }
 };
