@@ -108,7 +108,7 @@ module.exports = class Receive {
       response = Response.genNuxMessage(this.user);
     } else if (message.includes("counselor")) {
       response = OneTime.sendOneTimeNoti();
-    } else if (message.includes("take a survey")) {
+    } else if (message.includes("survey")) {
       response = Survey.startASurvey();
     } else if (Number(message)) {
       response = Order.handlePayload("ORDER_NUMBER");
