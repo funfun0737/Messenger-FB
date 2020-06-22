@@ -112,7 +112,7 @@ module.exports = class Survey {
       case "1":
           return [
               Response.genImageTemplate(
-            `${config.appUrl}/order.png`,
+            `${config.appUrl}/anato.png`,
             i18n.__("order.status")
               ),
               Response.genQuickReply("Rank your female-ness ", [
