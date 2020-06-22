@@ -52,15 +52,14 @@ module.exports = class Receive {
       } else if (event.optin.type == 'one_time_notif_req' && event.optin.payload == 'NOTIFY_ME') {
         this.oneTimeToken = event.optin.one_time_notif_token;
         responses = Response.genText(i18n.__("Ok!"));
-        let requestBody = {
-          "recipient": {
-            "one_time_notif_token": oneTimeToken
-          },
-          "message": {
-            "text": "Here is the letter for you!/counselor is available!"
-          }
-        }
-        setTimeout(() => GraphAPi.callSendAPI(requestBody), 1000*60);
+        // let requestBody = {
+        //   "recipient": {
+        //     "one_time_notif_token": oneTimeToken
+        //   },
+        //   "message": {
+        //     "text": "Here is the letter for you!/counselor is available!"
+        //   }
+        // }
       }
     } catch (error) {
       console.error(error);
