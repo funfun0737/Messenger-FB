@@ -182,7 +182,6 @@ app.get("/profile", (req, res) => {
 
   // Checks if a token and mode is in the query string of the request
   if (mode && token) {
-    console.log("YQTEST" + token);
     if (token === config.verifyToken) {
       if (mode == "webhook" || mode == "all") {
         Profile.setWebhook();
@@ -222,7 +221,6 @@ app.get("/profile", (req, res) => {
       }
       res.status(200).end();
     } else {
-      console.log("YQTEST 403");
       // Responds with '403 Forbidden' if verify tokens do not match
       res.sendStatus(403);
     }

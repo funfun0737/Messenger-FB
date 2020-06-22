@@ -144,6 +144,7 @@ module.exports = class Profile {
   }
 
   getMenuItems(locale) {
+    console.log("YQTEST menu");
     let param = locale === "en_US" ? "default" : locale;
 
     i18n.setLocale(locale);
