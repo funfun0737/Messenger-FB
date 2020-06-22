@@ -31,7 +31,6 @@ module.exports = class Receive {
   // Check if the event is a message or postback and
   // call the appropriate handler function
   handleMessage() {
-    console.log("HZTesst handleMessage");
 
     let event = this.webhookEvent;
 

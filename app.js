@@ -157,6 +157,9 @@ app.post("/webhook", (req, res) => {
           return receiveMessage.handleMessage();
         }
       }
+      else{
+        console.log("HZTest standby");
+      }
     });
   } else {
     // Returns a '404 Not Found' if event is not from a page subscription
