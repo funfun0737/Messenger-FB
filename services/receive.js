@@ -228,10 +228,10 @@ module.exports = class Receive {
         payload === "GITHUB"
     ) {
       response = Response.genNuxMessage(this.user);
-    }
-    if (payload == "SURVEY") {
-      console.log(payload);
+    }if(payload=="SURVEY"){
       response = Survey.startASurvey();
+    } else if (payload.startsWith("SURVEY")){
+      response = Survey.handlePayload();
     } else{
       response = {
         text: `This is a default postback message for payload: ${payload}!`
