@@ -100,7 +100,9 @@ module.exports = class Receive {
         message.includes("start over")
     ) {
       response = Response.genNuxMessage(this.user);
-    } else if (message.includes("counselor")) {
+    } else if (message.includes("talk to YuQi")) {
+      setTimeout(() => GraphAPi.callSendAPI(this.sendPassThread(this.user.psid)));
+    }else if (message.includes("counselor")) {
       response = OneTime.sendOneTimeNoti();
     } else if (message.includes("take a survey")) {
       response = Survey.startASurvey();
@@ -131,6 +133,29 @@ module.exports = class Receive {
     }
 
     return response;
+  }
+
+  sendPassThread(senderId) {
+    request(
+        {
+          uri: "https://graph.facebook.com/v2.6/me/pass_thread_control",
+          qs: { access_token: EAAEedv38DeYBAECCJnYz8ZAl4wZCVt5BZBzV2CI8K52ZApk9kyUfOFsnDIWBu3atvp9ZAi7qocIAmglm7axERtADYOnOIM7Bs9En08Q3NXjmMKEWM6mX0S3lFlenhsX3tB3lBrpACFCrXXMZA550WEw5732KnodHwwaJdmuHFa7LZAnaIaJL2aD },
+          method: "POST",
+          json: {
+            recipient: {
+              id: senderId
+            },
+            target_app_id: 832298603845523
+          }
+        },
+        (err, res, body) => {
+          if (err || body.error) {
+            console.log("UNABLE TO SEND PASS THREAD REQUEST", err || body.error);
+          } else {
+            console.log("PASSED THREAD TO MESSAGE DASHBOARD BOT");
+          }
+        }
+    );
   }
 
   // Handles mesage events with attachments
