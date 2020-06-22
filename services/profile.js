@@ -152,7 +152,7 @@ module.exports = class Profile {
       locale: param,
       composer_input_disabled: false,
       call_to_actions: [
-        {
+        // {
           // title: i18n.__("menu.support"),
           // type: "nested",
           // call_to_actions: [
@@ -167,7 +167,7 @@ module.exports = class Profile {
           //     payload: "CARE_HELP"
           //   }
           // ]
-        },
+        // },
         {
           title: i18n.__("menu.suggestion"),
           type: "postback",
