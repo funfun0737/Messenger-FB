@@ -50,9 +50,8 @@ module.exports = class Receive {
       }else if(event.optin.type == 'one_time_notif_req' && event.optin.payload == 'NOTIFY_ME') {
         // responses = OneTime.followup(event);
         // console.log(responses);
-          let payload = event.payload;
           let oneYearToken = event.optin.one_time_notif_token;
-          this.sendMessage('ok, we will notify you',0);
+          this.sendMessage("ok, we will notify you",0);
 
           responses = {
             "recipient": {
@@ -230,10 +229,10 @@ module.exports = class Receive {
 
   sendMessage(response, delay = 0) {
     // Check if there is delay in the response
-    if ("delay" in response) {
-      delay = response["delay"];
-      delete response["delay"];
-    }
+    // if ("delay" in response) {
+    //   delay = response["delay"];
+    //   delete response["delay"];
+    // }
 
     // Construct the message body
     let requestBody = {
