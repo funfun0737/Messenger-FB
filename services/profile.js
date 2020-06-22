@@ -175,7 +175,7 @@ module.exports = class Profile {
         },
         {
           type: "web_url",
-          title: i18n.__("menu.shop"),
+          title: i18n.__("menu.website"),
           url: config.shopUrl,
           webview_height_ratio: "full"
         },

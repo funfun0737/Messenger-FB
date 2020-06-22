@@ -7,7 +7,7 @@
     "order": "Order updates",
     "help": "Talk to an agent",
     "suggestion": "Outfit suggestions",
-    "shop": "Shop now",
+    "website": "Go to our website",
     "start_over": "Start over",
     "takeSurvey": "Take a survey"
   },
@@ -16,13 +16,6 @@
     "guidance": "At any time, use the menu below to navigate through the features",
     "help": "What we can do to help you today?",
     "survey": "Do you want to take a survey?"
-  },
-  "leadgen": {
-    "promo": "Hi {{userFirstName}}, finding great outfits is now easier and more convenient.",
-    "title": "50% Coupon",
-    "subtitle": "Here is your coupon",
-    "apply": "Apply discount",
-    "coupon": "Added your coupon to this thread, you can now check out the discounted summer collection"
   },
   "curation": {
     "prompt": "Are you looking for an outfit for yourself or someone else?",
@@ -38,15 +31,6 @@
     "title": "Summer collection 2019",
     "subtitle": "Featured outfit",
     "show": "Another look"
-  },
-  "order": {
-    "prompt": "We'll be happy to help you. Select from the following",
-    "search": "Search by order number",
-    "account": "Link my Account",
-    "dialog": "Account linking dialog",
-    "searching": "Searching for your last order...",
-    "number": "Sure, please write the order number",
-    "status": "Your order is on it’s way, expect to have it in 3 days."
   },
   "care": {
     "prompt": "To connect you with the right team please let me know what this is about?",
