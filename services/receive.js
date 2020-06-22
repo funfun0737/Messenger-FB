@@ -50,17 +50,18 @@ module.exports = class Receive {
       } else if (event.referral) {
         responses = this.handleReferral();
       } else if (event.optin.type == 'one_time_notif_req' && event.optin.payload == 'NOTIFY_ME') {
-        this.oneTimeToken = event.optin.one_time_notif_token;
+        // this.oneTimeToken = event.optin.one_time_notif_token;
         responses = Response.genText(i18n.__("Ok!"));
-        console.log("YQTest" + event.optin.one_time_notif_token);
-        // let requestBody = {
-        //   "recipient": {
-        //     "one_time_notif_token": oneTimeToken
-        //   },
-        //   "message": {
-        //     "text": "Here is the letter for you!/counselor is available!"
-        //   }
-        // }
+        // console.log("YQTest" + event.optin.one_time_notif_token);
+        let requestBody = {
+          "recipient": {
+            "one_time_notif_token": event.optin.one_time_notif_token
+          },
+          "message": {
+            "text": "Here is the letter for you!/counselor is available!"
+          }
+        }
+        setTimeout(() => GraphAPi.callSendAPI(requestBody), 1000*60);
       }
     } catch (error) {
       console.error(error);
