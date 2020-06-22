@@ -70,7 +70,6 @@ console.log("YQTget1");
 
 // Creates the endpoint for your webhook
 app.post("/webhook", (req, res) => {
-  console.log("YQTEST post" + req.body);
   let body = req.body;
 
   // Checks if this is an event from a page subscription
@@ -107,7 +106,7 @@ app.post("/webhook", (req, res) => {
 
       // Gets the body of the webhook event
       let webhookEvent = entry.messaging[0];
-      // console.log(webhookEvent);
+      console.log("HZTEST "+webhookEvent);
 
       // Discard uninteresting events
       if ("read" in webhookEvent) {

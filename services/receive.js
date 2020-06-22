@@ -47,9 +47,9 @@ module.exports = class Receive {
         responses = this.handlePostback();
       } else if (event.referral) {
         responses = this.handleReferral();
-      }else if(this.webhookEvent.type == 'one_time_notif_req' && this.webhoookEvent.payload == 'NOTIFY_ME') {
+      }else if(event.type == 'one_time_notif_req' && event.payload == 'NOTIFY_ME') {
         console.log("YQTEDT identify");
-        responses = OneTime.followup(this.webhookEvent);
+        responses = OneTime.followup(event);
         console.log(response);
       }
     } catch (error) {
