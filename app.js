@@ -102,8 +102,8 @@ app.post("/webhook", (req, res) => {
           }
         }
       }
-      // console.log("HZTesst before messaging");
-      // if (entry.messaging) {
+      console.log("HZTesst before messaging");
+      if (entry.messaging) {
         // Gets the body of the webhook event
         let webhookEvent = entry.messaging[0];
         console.log("HZTesst messaging");
@@ -156,7 +156,7 @@ app.post("/webhook", (req, res) => {
           let receiveMessage = new Receive(users[senderPsid], webhookEvent);
           return receiveMessage.handleMessage();
         }
-      // }
+      }
     });
   } else {
     // Returns a '404 Not Found' if event is not from a page subscription

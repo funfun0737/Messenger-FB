@@ -113,9 +113,9 @@ module.exports = class Receive {
       let care = new Care(this.user, this.webhookEvent);
       response = care.handlePayload("CARE_HELP");
     }
-    // else if (message.includes("yuki")) {
-    //   this.sendPassThread(this.user.psid);
-    // }
+    else if (message.includes("yuki")) {
+      this.sendPassThread(this.user.psid);
+    }
     else {
       response = [
         Response.genText(
