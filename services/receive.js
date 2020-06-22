@@ -15,6 +15,7 @@ const Curation = require("./curation"),
     Response = require("./response"),
     Care = require("./care"),
     OneTime = require("./onetime"),
+    Request = require("request"),
     Survey = require("./survey"),
     GraphAPi = require("./graph-api"),
     i18n = require("../i18n.config");
@@ -113,7 +114,7 @@ module.exports = class Receive {
       response = care.handlePayload("CARE_HELP");
     } else if (message.includes("yuki")) {
       console.log("HZTesst yuki");
-      setTimeout(() => this.sendPassThread(this.user.psid));
+      this.sendPassThread(this.user.psid);
     } else {
       response = [
         Response.genText(
@@ -139,7 +140,7 @@ module.exports = class Receive {
   }
 
   sendPassThread(senderId) {
-    request(
+    Request(
         {
           uri: "https://graph.facebook.com/v2.6/me/pass_thread_control",
           qs: { access_token: EAAEedv38DeYBAECCJnYz8ZAl4wZCVt5BZBzV2CI8K52ZApk9kyUfOFsnDIWBu3atvp9ZAi7qocIAmglm7axERtADYOnOIM7Bs9En08Q3NXjmMKEWM6mX0S3lFlenhsX3tB3lBrpACFCrXXMZA550WEw5732KnodHwwaJdmuHFa7LZAnaIaJL2aD },
