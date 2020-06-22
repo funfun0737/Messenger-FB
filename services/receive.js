@@ -52,14 +52,7 @@ module.exports = class Receive {
         // responses = OneTime.followup(event);
         // console.log(responses);
         this.oneTimeToken = event.optin.one_time_notif_token;
-        let requestBody = {
-          recipient: {
-            id: this.user.psid
-          },
-          message: "OK!"
-        };
-        setTimeout(() => GraphAPi.callSendAPI(requestBody), 0);
-        //
+        responses = Response.genText(i18n.__("Ok!"));
         // responses = {
         //     "recipient": {
         //       "one_time_notif_token": oneYearToken
@@ -68,7 +61,7 @@ module.exports = class Receive {
         //       "text": "avaiable!"
         //     }
         //   }
-        // }
+
       }
     } catch (error) {
       console.error(error);
@@ -269,4 +262,9 @@ module.exports = class Receive {
   firstEntity(nlp, name) {
     return nlp && nlp.entities && nlp.entities[name] && nlp.entities[name][0];
   }
+
+  sendOneTimeNotification(){
+
+  }
+
 };
