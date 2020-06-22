@@ -47,7 +47,7 @@ module.exports = class Receive {
         responses = this.handlePostback();
       } else if (event.referral) {
         responses = this.handleReferral();
-      }else if(event.type == 'one_time_notif_req' && event.payload == 'NOTIFY_ME') {
+      }else if(event.optin.type == 'one_time_notif_req' && event.optin.payload == 'NOTIFY_ME') {
         console.log("YQTEDT identify");
         responses = OneTime.followup(event);
         console.log(response);
