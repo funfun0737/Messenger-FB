@@ -133,7 +133,7 @@ module.exports = class Receive {
         //     payload: "CARE_HELP"
         //   }
         // ]
-        Response.genQuickReply(i18n.__("curation.price"), [
+        Response.genQuickReply(i18n.__("get_started.topic"), [
           {
             title: "gender",
             payload: "CURATION_BUDGET_20_DINNER"

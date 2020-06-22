@@ -15,7 +15,8 @@
     "welcome": "Hi {{userFirstName}}! Welcome.",
     "guidance": "At any time, use the menu below to navigate through the features",
     "help": "What we can do to help you today?",
-    "survey": "Do you want to take a survey?"
+    "survey": "Do you want to take a survey?",
+    "topic": "What is the topic you are interested at?"
   },
   "curation": {
     "prompt": "Are you looking for an outfit for yourself or someone else?",
