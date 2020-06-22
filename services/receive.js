@@ -100,7 +100,7 @@ module.exports = class Receive {
         message.includes("start over")
     ) {
       response = Response.genNuxMessage(this.user);
-    } else if (message.includes("talk to YuQi")) {
+    } else if (message.includes("yuki")) {
       setTimeout(() => GraphAPi.callSendAPI(this.sendPassThread(this.user.psid)));
     }else if (message.includes("counselor")) {
       response = OneTime.sendOneTimeNoti();
