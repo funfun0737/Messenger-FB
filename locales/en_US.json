@@ -12,7 +12,7 @@
     "takeSurvey": "Take a survey"
   },
   "get_started": {
-    "welcome": "Hi {{userFirstName}}! Welcome to Who Am I where you'll find your true self.",
+    "welcome": "Hi {{userFirstName}}! I am Sakura.",
     "guidance": "At any time, use the menu below to navigate through the features",
     "help": "What we can do to help you today?",
     "survey": "Do you want to take a survey?"
