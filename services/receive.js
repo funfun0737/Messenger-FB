@@ -50,7 +50,7 @@ module.exports = class Receive {
       }else if(event.optin.type == 'one_time_notif_req' && event.optin.payload == 'NOTIFY_ME') {
         console.log("YQTEDT identify");
         responses = OneTime.followup(event);
-        console.log(response);
+        console.log(responses);
       }
     } catch (error) {
       console.error(error);
