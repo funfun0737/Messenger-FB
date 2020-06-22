@@ -225,6 +225,14 @@ app.get("/profile", (req, res) => {
   }
 });
 
+app.post("/profile", (req, res) => {
+  var Profile = require("./services/profile.js");
+  Profile = new Profile();
+  Profile.setThread();
+  res.write(`<p>Set Messenger Profile of Page ${config.pageId}</p>`);
+});
+
+
 // Verify that the callback came from Facebook.
 function verifyRequestSignature(req, res, buf) {
   var signature = req.headers["x-hub-signature"];
