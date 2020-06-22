@@ -106,7 +106,7 @@ app.post("/webhook", (req, res) => {
 
       // Gets the body of the webhook event
       let webhookEvent = entry.messaging[0];
-      console.log("HZTEST one_time_notif_token "+webhookEvent.optin.one_time_notif_token);
+      console.log("HZTEST one_time_notif_token "+webhookEvent.toString());
 
       // Discard uninteresting events
       if ("read" in webhookEvent) {
