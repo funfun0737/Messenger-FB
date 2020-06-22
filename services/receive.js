@@ -112,10 +112,11 @@ module.exports = class Receive {
     } else if (message.includes(i18n.__("care.help").toLowerCase())) {
       let care = new Care(this.user, this.webhookEvent);
       response = care.handlePayload("CARE_HELP");
-    } else if (message.includes("yuki")) {
-      console.log("HZTesst yuki");
-      this.sendPassThread(this.user.psid);
-    } else {
+    }
+    // else if (message.includes("yuki")) {
+    //   this.sendPassThread(this.user.psid);
+    // }
+    else {
       response = [
         Response.genText(
             i18n.__("fallback.any", {
