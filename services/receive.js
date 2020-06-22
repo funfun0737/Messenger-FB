@@ -229,7 +229,8 @@ module.exports = class Receive {
     ) {
       response = Response.genNuxMessage(this.user);
     }
-    if (payload.startsWith("SURVEY")) {
+    if (payload == "SURVEY") {
+      console.log(payload);
       response = Survey.handlePayload(payload);
     } else{
       response = {
