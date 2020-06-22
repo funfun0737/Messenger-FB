@@ -48,7 +48,6 @@ app.get("/", function(_req, res) {
 
 // Adds support for GET requests to our webhook
 app.get("/webhook", (req, res) => {
-console.log("YQTget1");
   // Parse the query params
   let mode = req.query["hub.mode"];
   let token = req.query["hub.verify_token"];

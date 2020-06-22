@@ -26,7 +26,5 @@ module.exports = class onetime {
             }
         }
     }
-
-
 }
 

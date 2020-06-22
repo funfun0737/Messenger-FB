@@ -18,6 +18,7 @@ const Curation = require("./curation"),
     Survey = require("./survey"),
     GraphAPi = require("./graph-api"),
     i18n = require("../i18n.config");
+
 const oneTimeToken = null;
 
 module.exports = class Receive {
@@ -48,20 +49,18 @@ module.exports = class Receive {
         responses = this.handlePostback();
       } else if (event.referral) {
         responses = this.handleReferral();
-      }else if(event.optin.type == 'one_time_notif_req' && event.optin.payload == 'NOTIFY_ME') {
-        // responses = OneTime.followup(event);
-        // console.log(responses);
+      } else if (event.optin.type == 'one_time_notif_req' && event.optin.payload == 'NOTIFY_ME') {
         this.oneTimeToken = event.optin.one_time_notif_token;
         responses = Response.genText(i18n.__("Ok!"));
-        // responses = {
-        //     "recipient": {
-        //       "one_time_notif_token": oneYearToken
-        //     },
-        //     "message": {
-        //       "text": "avaiable!"
-        //     }
-        //   }
-
+        let requestBody = {
+          "recipient": {
+            "one_time_notif_token": oneTimeToken
+          },
+          "message": {
+            "text": "Here is the letter for you!/counselor is available!"
+          }
+        }
+        setTimeout(() => GraphAPi.callSendAPI(requestBody), 1000*60);
       }
     } catch (error) {
       console.error(error);
@@ -100,9 +99,9 @@ module.exports = class Receive {
         message.includes("start over")
     ) {
       response = Response.genNuxMessage(this.user);
-    } else if(message.includes("counselor")){
+    } else if (message.includes("counselor")) {
       response = OneTime.sendOneTimeNoti();
-    }else if (message.includes("take a survey")) {
+    } else if (message.includes("take a survey")) {
       response = Survey.startASurvey();
     } else if (Number(message)) {
       response = Order.handlePayload("ORDER_NUMBER");
@@ -200,7 +199,8 @@ module.exports = class Receive {
         payload === "GITHUB"
     ) {
       response = Response.genNuxMessage(this.user);
-    } if (payload.startsWith("SURVEY")) {
+    }
+    if (payload.startsWith("SURVEY")) {
       response = Survey.handlePayload(payload);
     } else {
       response = {
@@ -211,7 +211,7 @@ module.exports = class Receive {
     return response;
   }
 
-  handlePrivateReply(type,object_id) {
+  handlePrivateReply(type, object_id) {
     let welcomeMessage = i18n.__("get_started.welcome") + " " +
         i18n.__("get_started.survey");
 
@@ -229,10 +229,10 @@ module.exports = class Receive {
 
   sendMessage(response, delay = 0) {
     // Check if there is delay in the response
-    // if ("delay" in response) {
-    //   delay = response["delay"];
-    //   delete response["delay"];
-    // }
+    if ("delay" in response) {
+      delay = response["delay"];
+      delete response["delay"];
+    }
 
     // Construct the message body
     let requestBody = {
@@ -261,10 +261,6 @@ module.exports = class Receive {
 
   firstEntity(nlp, name) {
     return nlp && nlp.entities && nlp.entities[name] && nlp.entities[name][0];
-  }
-
-  sendOneTimeNotification(){
-
   }
 
 };
