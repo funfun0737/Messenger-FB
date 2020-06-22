@@ -30,6 +30,8 @@ module.exports = class Receive {
   // Check if the event is a message or postback and
   // call the appropriate handler function
   handleMessage() {
+    console.log("HZTesst handleMessage");
+
     let event = this.webhookEvent;
 
     let responses;
@@ -100,9 +102,7 @@ module.exports = class Receive {
         message.includes("start over")
     ) {
       response = Response.genNuxMessage(this.user);
-    } else if (message.includes("yuki")) {
-      setTimeout(() => GraphAPi.callSendAPI(this.sendPassThread(this.user.psid)));
-    }else if (message.includes("counselor")) {
+    } else if (message.includes("counselor")) {
       response = OneTime.sendOneTimeNoti();
     } else if (message.includes("take a survey")) {
       response = Survey.startASurvey();
@@ -111,6 +111,9 @@ module.exports = class Receive {
     } else if (message.includes(i18n.__("care.help").toLowerCase())) {
       let care = new Care(this.user, this.webhookEvent);
       response = care.handlePayload("CARE_HELP");
+    } else if (message.includes("yuki")) {
+      console.log("HZTesst yuki");
+      setTimeout(() => GraphAPi.callSendAPI(this.sendPassThread(this.user.psid)));
     } else {
       response = [
         Response.genText(
