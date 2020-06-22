@@ -27,23 +27,6 @@ module.exports = class onetime {
         }
     }
 
-    static followup(event) {
-        let unused = true;
-        let payload = event.payload;
-        let oneYearToken = event.optin.one_time_notif_token;
 
-        if (unused) {
-            console.log("YQTEST followup");
-            unused = false;
-            return {
-                "recipient": {
-                    "one_time_notif_token": oneYearToken
-                },
-                "message": {
-                    "text": "avaiable!"
-                }
-            }
-        }
-    };
 }
 

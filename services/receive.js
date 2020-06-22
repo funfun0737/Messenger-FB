@@ -48,10 +48,21 @@ module.exports = class Receive {
       } else if (event.referral) {
         responses = this.handleReferral();
       }else if(event.optin.type == 'one_time_notif_req' && event.optin.payload == 'NOTIFY_ME') {
-        console.log("YQTEDT identify");
-        responses = OneTime.followup(event);
-        console.log(responses);
-      }
+        // responses = OneTime.followup(event);
+        // console.log(responses);
+          let payload = event.payload;
+          let oneYearToken = event.optin.one_time_notif_token;
+          this.sendMessage('ok, we will notify you',0);
+
+          responses = {
+            "recipient": {
+              "one_time_notif_token": oneYearToken
+            },
+            "message": {
+              "text": "avaiable!"
+            }
+          }
+        }
     } catch (error) {
       console.error(error);
       responses = {
