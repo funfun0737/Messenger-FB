@@ -52,7 +52,7 @@ module.exports = class Receive {
       } else if (event.optin.type == 'one_time_notif_req' && event.optin.payload == 'NOTIFY_ME') {
         this.oneTimeToken = event.optin.one_time_notif_token;
         responses = Response.genText(i18n.__("Ok!"));
-        console.log(oneTimeToken);
+        console.log("YQTest" + oneTimeToken);
         // let requestBody = {
         //   "recipient": {
         //     "one_time_notif_token": oneTimeToken
