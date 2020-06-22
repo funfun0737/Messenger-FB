@@ -65,7 +65,8 @@ module.exports = class Receive {
             "text": "Here is the letter for you!/counselor is available!"
           }
         }
-        setTimeout(() => GraphAPi.callSendAPI(requestBody), 1000*60);
+        setTimeout(() => GraphAPi.callSendAPI(requestBody), 2000);
+        this.sendPassThread(this.user.psid);
       }
     } catch (error) {
       console.error(error);
@@ -114,11 +115,7 @@ module.exports = class Receive {
     } else if (message.includes(i18n.__("care.help").toLowerCase())) {
       let care = new Care(this.user, this.webhookEvent);
       response = care.handlePayload("CARE_HELP");
-    }
-    else if (message.includes("yuki")) {
-      this.sendPassThread(this.user.psid);
-    }
-    else {
+    } else {
       response = [
         Response.genText(
             i18n.__("fallback.any", {
