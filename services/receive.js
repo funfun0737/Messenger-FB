@@ -143,7 +143,7 @@ module.exports = class Receive {
     Request(
         {
           uri: "https://graph.facebook.com/v2.6/me/pass_thread_control",
-          qs: { access_token: EAAEedv38DeYBAECCJnYz8ZAl4wZCVt5BZBzV2CI8K52ZApk9kyUfOFsnDIWBu3atvp9ZAi7qocIAmglm7axERtADYOnOIM7Bs9En08Q3NXjmMKEWM6mX0S3lFlenhsX3tB3lBrpACFCrXXMZA550WEw5732KnodHwwaJdmuHFa7LZAnaIaJL2aD },
+          qs: { access_token: "EAAEedv38DeYBAECCJnYz8ZAl4wZCVt5BZBzV2CI8K52ZApk9kyUfOFsnDIWBu3atvp9ZAi7qocIAmglm7axERtADYOnOIM7Bs9En08Q3NXjmMKEWM6mX0S3lFlenhsX3tB3lBrpACFCrXXMZA550WEw5732KnodHwwaJdmuHFa7LZAnaIaJL2aD" },
           method: "POST",
           json: {
             recipient: {
