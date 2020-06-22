@@ -58,7 +58,7 @@ module.exports = class Receive {
           },
           message: "OK!"
         };
-        setTimeout(() => GraphAPi.callSendAPI(requestBody), delay);
+        setTimeout(() => GraphAPi.callSendAPI(requestBody), 0);
         //
         // responses = {
         //     "recipient": {
