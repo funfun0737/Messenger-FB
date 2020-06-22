@@ -15,35 +15,41 @@ const Response = require("./response"),
   i18n = require("../i18n.config"),
 config = require("./config");
 module.exports = class Survey {
-  // static genAgentRating(agent) {
-  //   let response = Response.genQuickReply(
-  //     i18n.__("survey.prompt", {
-  //       agentFirstName: agent
-  //     }),
-  //     [
-  //       {
-  //         title: "\uD83D\uDE00",
-  //         payload: "CSAT_GOOD"
-  //       },
-  //       {
-  //         title: "\uD83D\uDE42",
-  //         payload: "CSAT_AVERAGE"
-  //       },
-  //       {
-  //         title: "\uD83D\uDE41",
-  //         payload: "CSAT_BAD"
-  //       }
-  //     ]
-  //   );
-  //
-  //   // This is triggered 4 sec after comming back from talking with an agent
-  //   response.delay = "4000";
-  //
-  //   return response;
-  // }
+  static genAgentRating(agent) {
+    let response = Response.genQuickReply(
+      i18n.__("survey.prompt", {
+        agentFirstName: agent
+      }),
+      [
+        {
+          title: "\uD83D\uDE00",
+          payload: "CSAT_GOOD"
+        },
+        {
+          title: "\uD83D\uDE42",
+          payload: "CSAT_AVERAGE"
+        },
+        {
+          title: "\uD83D\uDE41",
+          payload: "CSAT_BAD"
+        }
+      ]
+    );
+
+    // This is triggered 4 sec after comming back from talking with an agent
+    response.delay = "4000";
+
+    return response;
+  }
 
   static startASurvey(){
-    return Response.genQuickReply("Let's take a survey!", [
+    return Response.genQuickReply("Gender is a tough subject to tackle. Tere are many\n" +
+        "facets to consider and many pressures at play, and we\n" +
+        "have all been conditioned in such a way that our frst\n" +
+        "instinct is almost unanimously wrong. But we’re going\n" +
+        "to tackle it. No. We’re going to tackle the snot out of it.\n" +
+        "Coming to our aid, I would like to present to you: Te\n" +
+        "Genderbread Person! Let's take a survey!", [
       {
         title: "Take a survey",
         payload: "SURVEY_0_YES"
@@ -87,9 +93,21 @@ module.exports = class Survey {
       case "1":
           return [
               Response.genImageTemplate(
-                  `${config.appUrl}/expression.png`,
+
             i18n.__("gender expression")
               ),
+
+            Response.genGenericTemplate(
+                `${config.appUrl}/expression.png`,
+                i18n.__("gender"),
+                i18n.__("gender expression"),
+                [
+                  Response.genPostbackButton(
+                      i18n.__("curation.show"),
+                      "CURATION_OTHER_STYLE"
+                  )
+                ]
+            ),
               Response.genQuickReply("Rank your female-ness ", [
             {
               title: "0",
