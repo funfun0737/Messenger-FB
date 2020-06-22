@@ -1,6 +1,6 @@
 {
   "profile": {
-    "greeting": "Welcome  {{user_first_name}}! Click get started to enjoy our sample automated messaging experience. If you want to build a similar one visit https://fb.me/get-sample-oc"
+    "greeting": "Welcome  {{user_first_name}}! Click get started to enjoy our sample automated messaging experience. "
   },
   "menu": {
     "support": "Support",
@@ -12,7 +12,7 @@
     "takeSurvey": "Take a survey"
   },
   "get_started": {
-    "welcome": "Hi {{userFirstName}}! I am Sakura.",
+    "welcome": "Hi {{userFirstName}}! Welcome.",
     "guidance": "At any time, use the menu below to navigate through the features",
     "help": "What we can do to help you today?",
     "survey": "Do you want to take a survey?"

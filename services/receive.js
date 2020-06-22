@@ -123,16 +123,27 @@ module.exports = class Receive {
             })
         ),
         Response.genText(i18n.__("get_started.guidance")),
-        Response.genQuickReply(i18n.__("get_started.help"), [
+        // Response.genQuickReply(i18n.__("get_started.help"), [
+        //   {
+        //     title: i18n.__("menu.suggestion"),
+        //     payload: "CURATION"
+        //   },
+        //   {
+        //     title: i18n.__("menu.help"),
+        //     payload: "CARE_HELP"
+        //   }
+        // ]
+        Response.genQuickReply(i18n.__("curation.price"), [
           {
-            title: i18n.__("menu.suggestion"),
-            payload: "CURATION"
+            title: "gender",
+            payload: "CURATION_BUDGET_20_DINNER"
           },
           {
-            title: i18n.__("menu.help"),
-            payload: "CARE_HELP"
+            title: "race",
+            payload: "CURATION_BUDGET_30_DINNER"
           }
-        ])
+        ]
+        )
       ];
     }
 
