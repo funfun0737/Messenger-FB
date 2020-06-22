@@ -9,12 +9,36 @@
   <p>
     This site is part of the Sample Messenger Bot experience of Who Am I
   </p>
-  <ul>
-    <li>
-      <a href="https://www.originalcoastclothing.com/"
-        >Who Am I Website</a
-      >
-    </li>
+  <!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        xfbml            : true,
+        version          : 'v7.0'
+      });
+    };
+
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+  <!-- Your Chat Plugin code -->
+  <div class="fb-customerchat"
+       attribution=setup_tool
+       page_id="106619131102827"
+       theme_color="#6699cc">
+  </div>
+<!--  <ul>-->
+<!--    <li>-->
+<!--      <a href="https://www.originalcoastclothing.com/"-->
+<!--        >Who Am I Website</a-->
+<!--      >-->
+<!--    </li>-->
 <!--    <li>-->
 <!--      Wan't to build your own?-->
 <!--      <a-->
@@ -22,7 +46,7 @@
 <!--        >DevDocs</a-->
 <!--      >-->
 <!--    </li>-->
-  </ul>
+<!--  </ul>-->
 </div>
 
 <% include footer %>
