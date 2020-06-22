@@ -56,7 +56,6 @@ module.exports = class Survey {
   }
 
   static handlePayload(payload) {
-    console.log("YQTEST"+payload);
 
     let mark0 = payload.indexOf("_", 0);
     let mark1 = payload.indexOf("_", mark0+1);

@@ -222,16 +222,12 @@ module.exports = class Receive {
     let response;
 
     // Set the response based on the payload
-    if (
-        payload === "GET_STARTED" ||
-        payload === "DEVDOCS" ||
-        payload === "GITHUB"
-    ) {
+    if (payload === "GET_STARTED") {
       response = Response.genNuxMessage(this.user);
     }if(payload=="SURVEY"){
       response = Survey.startASurvey();
     } else if (payload.startsWith("SURVEY")){
-      response = Survey.handlePayload();
+      response = Survey.handlePayload(payload);
     } else{
       response = {
         text: `This is a default postback message for payload: ${payload}!`
