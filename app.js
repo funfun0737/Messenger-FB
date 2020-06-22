@@ -102,7 +102,7 @@ app.post("/webhook", (req, res) => {
           }
         }
       }
-      if (webhookEvent.messaging) {
+      if (entry.messaging) {
         // Gets the body of the webhook event
         let webhookEvent = entry.messaging[0];
 
