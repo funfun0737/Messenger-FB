@@ -40,12 +40,14 @@ module.exports = class Receive {
     try {
       if (event.message) {
         let message = event.message;
+        console.log("HZTest message "+message);
 
         if (message.quick_reply) {
           responses = this.handleQuickReply();
         } else if (message.attachments) {
           responses = this.handleAttachmentMessage();
         } else if (message.text) {
+          console.log("HZTest message.text "+message.text);
           responses = this.handleTextMessage();
         }
       } else if (event.postback) {
