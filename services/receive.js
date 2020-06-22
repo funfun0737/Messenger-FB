@@ -20,8 +20,6 @@ const Curation = require("./curation"),
     GraphAPi = require("./graph-api"),
     i18n = require("../i18n.config");
 
-const oneTimeToken = null;
-
 module.exports = class Receive {
   constructor(user, webhookEvent) {
     this.user = user;
@@ -233,8 +231,6 @@ module.exports = class Receive {
     }
     if (payload.startsWith("SURVEY")) {
       response = Survey.handlePayload(payload);
-    } else if(payload.startsWith("")){
-
     } else{
       response = {
         text: `This is a default postback message for payload: ${payload}!`
