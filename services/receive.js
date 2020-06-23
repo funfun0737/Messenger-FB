@@ -116,11 +116,8 @@ module.exports = class Receive {
     } else {
       response = [
         Response.genText(
-            i18n.__("fallback.any", {
-              message: this.webhookEvent.message.text
-            })
+            "Hi, I am your friendly assistant Sakura!"
         ),
-        Response.genText(i18n.__("get_started.guidance")),
         Response.genQuickReply(i18n.__("get_started.topic"), [
           {
             title: "gender",
