@@ -99,7 +99,18 @@ module.exports = class Survey {
               title: "1",
               payload: "SURVEY_2_1"
             }])];
+      case "2":
+        return
+          Response.genText(
+              i18n.__(`
+      | --- <b>A new reservation</b> --- |
+      | ------------------------------------------------|
+      | 1. Username: <b>hi</b>   |
+      | ------------------------------------------------ |
+      `
 
+              )
+          )
     }
   }
 
