@@ -53,7 +53,8 @@ module.exports = class Receive {
         responses = this.handleReferral();
       } else if (event.optin && event.optin.type == 'one_time_notif_req' && event.optin.payload == 'NOTIFY_ME') {
         // this.oneTimeToken = event.optin.one_time_notif_token;
-        responses = Response.genText(i18n.__("Ok!"));
+        this.sendMessage(Response.genText(i18n.__("Ok!")));
+        // responses = Response.genText(i18n.__("Ok!"));
         // console.log("YQTest" + event.optin.one_time_notif_token);
         let requestBody = {
           "recipient": {
@@ -64,6 +65,8 @@ module.exports = class Receive {
           }
         }
         setTimeout(() => GraphAPi.callSendAPI(requestBody), 1000);
+        let care = new Care(this.user, this.webhookEvent);
+        responses = care.handlePayload("CARE_HELP");
         setTimeout(() => this.sendPassThread(this.user.psid), 1000);
       }
     } catch (error) {
