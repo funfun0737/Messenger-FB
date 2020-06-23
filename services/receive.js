@@ -117,15 +117,14 @@ module.exports = class Receive {
       response = [
         Response.genText("Hi, I'm your friendly bot Sakura!"),
         Response.genText("Let's find who you are!"),
-        Response.genText("Which topic do you want to start from?"),
-        Response.genQuickReply(i18n.__("get_started.topic"), [
+        Response.genQuickReply("Which topic do you want to start from?", [
           {
             title: "gender",
-            payload: "SURVEY"
+            payload: "SURVEY_0"
           },
           {
             title: "race",
-            payload: "CARE_HELP"
+            payload: "SURVEY_0"
           }
         ]
         )
