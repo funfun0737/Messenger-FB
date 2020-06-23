@@ -43,13 +43,7 @@ module.exports = class Survey {
   }
 
   static startASurvey(){
-    return Response.genQuickReply("Gender is a tough subject to tackle. Tere are many\n" +
-        "facets to consider and many pressures at play, and we\n" +
-        "have all been conditioned in such a way that our frst\n" +
-        "instinct is almost unanimously wrong. But we’re going\n" +
-        "to tackle it. No. We’re going to tackle the snot out of it.\n" +
-        "Coming to our aid, I would like to present to you: Te\n" +
-        "Genderbread Person! Let's take a survey!", [
+    return Response.genQuickReply(" Let's take a survey!", [
       {
         title: "Take a survey",
         payload: "SURVEY_0_YES"
@@ -93,21 +87,9 @@ module.exports = class Survey {
       case "1":
           return [
               Response.genImageTemplate(
-
-            i18n.__("gender expression")
+                  `${config.appUrl}/expression.png`,
+                  i18n.__("gender expression")
               ),
-
-            Response.genGenericTemplate(
-                `${config.appUrl}/expression.png`,
-                i18n.__("gender"),
-                i18n.__("gender expression"),
-                [
-                  Response.genPostbackButton(
-                      i18n.__("curation.show"),
-                      "CURATION_OTHER_STYLE"
-                  )
-                ]
-            ),
               Response.genQuickReply("Rank your female-ness ", [
             {
               title: "0",
@@ -120,4 +102,5 @@ module.exports = class Survey {
 
     }
   }
+
 };
