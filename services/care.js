@@ -22,7 +22,7 @@ module.exports = class Care {
     this.webhookEvent = webhookEvent;
   }
 
-  handlePayload(payload) {
+  handlePayload() {
     return [
           Response.genTextWithPersona(
             i18n.__("care.issue", {
