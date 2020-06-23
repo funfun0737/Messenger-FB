@@ -12,6 +12,7 @@
 
 // Imports dependencies
 const Response = require("./response"),
+    OneTime = require("./onetime"),
   i18n = require("../i18n.config"),
 config = require("./config");
 module.exports = class Survey {
@@ -100,6 +101,25 @@ module.exports = class Survey {
               payload: "SURVEY_2_1"
             }])];
       case "2":
+        return Response.genQuickReply("Cool, would you like to talk to a counselor?", [
+            {
+              title: "Sure",
+              payload: "SURVEY_100_YES"
+            },
+            {
+              title: "Maybe later",
+              payload: "SURVEY_100_NO"
+            }]);
+      case "100":
+        switch (choice) {
+          case "YES":
+            return [
+                Response.genText("We finding the best matching for you, please wait."),
+                OneTime.sendOneTimeNoti()
+            ];
+          case "NO":
+            return Response.genText("Have a nice day, see you!");
+        }
     }
   }
 
