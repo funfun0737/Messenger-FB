@@ -114,8 +114,9 @@ module.exports = class Survey {
         switch (choice) {
           case "YES":
             return [
-                Response.genText("We finding the best matching for you, please wait."),
-                OneTime.sendOneTimeNoti()
+                Response.genText("We are finding the best counselor for you."),
+              Response.genText("Do you want to get notified when your counselor is available?"),
+              OneTime.sendOneTimeNoti()
             ];
           case "NO":
             return Response.genText("Have a nice day, see you!");

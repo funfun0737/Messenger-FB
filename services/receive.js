@@ -60,11 +60,11 @@ module.exports = class Receive {
             "one_time_notif_token": event.optin.one_time_notif_token
           },
           "message": {
-            "text": "Here is the letter for you!/counselor is available!"
+            "text": "Hi, we are connecting you to Rein!"
           }
         }
-        setTimeout(() => GraphAPi.callSendAPI(requestBody), 2000);
-        this.sendPassThread(this.user.psid);
+        setTimeout(() => GraphAPi.callSendAPI(requestBody), 1000);
+        setTimeout(() => this.sendPassThread(this.user.psid), 1000);
       }
     } catch (error) {
       console.error(error);
@@ -115,12 +115,9 @@ module.exports = class Receive {
       response = care.handlePayload("CARE_HELP");
     } else {
       response = [
-        Response.genText(
-            i18n.__("fallback.any", {
-              message: this.webhookEvent.message.text
-            })
-        ),
-        Response.genText(i18n.__("get_started.guidance")),
+        Response.genText("Hi, I'm your friendly bot Sakura!"),
+        Response.genText("Let's find who you are!"),
+        Response.genText("Which topic do you want to start from?"),
         Response.genQuickReply(i18n.__("get_started.topic"), [
           {
             title: "gender",
