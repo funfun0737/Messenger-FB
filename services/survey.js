@@ -85,40 +85,40 @@ module.exports = class Survey {
           default: break;
         }
       case "1":
-          return [
-            Response.genText(
-                i18n.__(`
-      | --- <b>A new reservation</b> --- |
-      | ------------------------------------------------|
-      | 1. Username: <b>hi</b>   |
-      | ------------------------------------------------ |
-      `),
-              Response.genImageTemplate(
-                  `${config.appUrl}/expression.png`,
-                  i18n.__("gender expression")
-              ),
-              Response.genQuickReply("Rank your female-ness ", [
-            {
-              title: "0",
-              payload: "SURVEY_2_0"
-            },
-            {
-              title: "1",
-              payload: "SURVEY_2_1"
-            }])];
+      //     return [
+      //       Response.genText(
+      //           i18n.__(`
+      // | --- <b>A new reservation</b> --- |
+      // | ------------------------------------------------|
+      // | 1. Username: <b>hi</b>   |
+      // | ------------------------------------------------ |
+      // `),
+      //         Response.genImageTemplate(
+      //             `${config.appUrl}/expression.png`,
+      //             i18n.__("gender expression")
+      //         ),
+      //         Response.genQuickReply("Rank your female-ness ", [
+      //       {
+      //         title: "0",
+      //         payload: "SURVEY_2_0"
+      //       },
+      //       {
+      //         title: "1",
+      //         payload: "SURVEY_2_1"
+      //       }])];
       case "2":
-        return
-
-          Response.genText(
-              i18n.__(`
-      | --- <b>A new reservation</b> --- |
-      | ------------------------------------------------|
-      | 1. Username: <b>hi</b>   |
-      | ------------------------------------------------ |
-      `
-
-              )
-          )
+      //   return
+      //
+      //     Response.genText(
+      //         i18n.__(`
+      // | --- <b>A new reservation</b> --- |
+      // | ------------------------------------------------|
+      // | 1. Username: <b>hi</b>   |
+      // | ------------------------------------------------ |
+      // `
+      //
+      //         )
+      //     )
     }
   }
 
