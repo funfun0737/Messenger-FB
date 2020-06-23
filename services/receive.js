@@ -241,6 +241,8 @@ module.exports = class Receive {
     let welcomeMessage = i18n.__("get_started.welcome") + " " +
         i18n.__("get_started.survey");
 
+    console.log("HZTest handlePrivateReply");
+
     let response = Survey.startASurvey();
 
     let requestBody = {

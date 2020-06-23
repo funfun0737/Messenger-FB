@@ -43,7 +43,7 @@ module.exports = class Survey {
   }
 
   static startASurvey(){
-    return Response.genQuickReply(" Let's take a survey!", [
+    return Response.genQuickReply("Great, let's take a survey!", [
       {
         title: "Take a survey",
         payload: "SURVEY_0_YES"

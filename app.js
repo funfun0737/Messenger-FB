@@ -83,6 +83,7 @@ app.post("/webhook", (req, res) => {
         let receiveMessage = new Receive();
         if (entry.changes[0].field === "feed") {
           let change = entry.changes[0].value;
+          console.log("HZTest change.item "+change.item);
           switch (change.item) {
             case "post":
               return receiveMessage.handlePrivateReply(
