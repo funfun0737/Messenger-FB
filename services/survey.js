@@ -16,32 +16,6 @@ const Response = require("./response"),
     i18n = require("../i18n.config"),
     config = require("./config");
 module.exports = class Survey {
-    static genAgentRating(agent) {
-        let response = Response.genQuickReply(
-            i18n.__("survey.prompt", {
-                agentFirstName: agent
-            }),
-            [
-                {
-                    title: "\uD83D\uDE00",
-                    payload: "CSAT_GOOD"
-                },
-                {
-                    title: "\uD83D\uDE42",
-                    payload: "CSAT_AVERAGE"
-                },
-                {
-                    title: "\uD83D\uDE41",
-                    payload: "CSAT_BAD"
-                }
-            ]
-        );
-
-        // This is triggered 4 sec after comming back from talking with an agent
-        response.delay = "4000";
-
-        return response;
-    }
 
     static startASurvey() {
         return Response.genQuickReply(" Let's take a survey!", [
@@ -90,9 +64,9 @@ module.exports = class Survey {
                 return [
                     Response.genImageTemplate(
                         `${config.appUrl}/1.png`,
-                        i18n.__("we invite you two rank using femaleness and maleness using two continuums"),
+                        i18n.__("we invite you to rank femaleness and maleness using two continuums"),
                     ),
-                    Response.genQuickReply("Please rank your female-ness ", [
+                    Response.genQuickReply("First, please rank female-ness ", [
                         {
                             title: "0",
                             payload: "SURVEY_2_0"
@@ -121,7 +95,7 @@ module.exports = class Survey {
                     ])];
             case "2":
                 return [
-                    Response.genQuickReply("Please rank your male-ness ", [
+                    Response.genQuickReply("Please rank male-ness ", [
                         {
                             title: "0",
                             payload: "SURVEY_3_0"
@@ -150,9 +124,18 @@ module.exports = class Survey {
                     ])];
             case "3":
                 return [
-                    Response.genImageTemplate(
+                    Response.genGenericTemplate(
                         `${config.appUrl}/2.png`,
                         i18n.__("examples of different gender expressions and possible labels"),
+                        i18n.__("If you want to know more about this, check this website"), [
+                            Response.genWebUrlButton(
+                            i18n.__("gender expression"),
+                            `${config.shopUrl}`
+                        ),
+                            Response.genPostbackButton(i18n.__("next"),"SURVEY_4_0"),
+                            Response.genPostbackButton(i18n.__("maybe later"),"SURVEY_4_0")
+                        ]
+
                     ),
                     Response.genText((i18n.__(" “Androgynous” might be a new word, and it\n" +
                         "simply means a gender expression that has\n" +
