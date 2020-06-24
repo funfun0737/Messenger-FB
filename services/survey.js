@@ -148,7 +148,7 @@ module.exports = class Survey {
 
                 return Response.genQuickReply("This is the end of survey, would you like to talk to a counselor?", [
                     {
-                        title: "Sure",
+                        title: "Yes",
                         payload: "SURVEY_100_YES"
                     },
                     {

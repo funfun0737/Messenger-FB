@@ -114,29 +114,31 @@ module.exports = class Receive {
       let care = new Care(this.user, this.webhookEvent);
       response = care.handlePayload("CARE_HELP");
     } else {
-      response = [
-        Response.genText("Hi, I'm your friendly bot Sakura!"),
-        Response.genText("Let's start the journey of finding who you are!"),
-        Response.genQuickReply("Which topic do you want to start from?", [
-          {
-            title: "gender",
-            payload: "SURVEY_0_YES"
-          },
-          {
-            title: "race",
-            payload: "SURVEY_0_YES"
-          },
-          {
-            title: "personality",
-            payload: "SURVEY_0_YES"
-          },
-          {
-            title: "temperature",
-            payload: "SURVEY_0_YES"
-          }
-        ]
-        )
-      ];
+      // response = [
+      //   Response.genText("Hi, I'm your friendly bot Sakura!"),
+      //   Response.genText("Let's start the journey of finding who you are!"),
+      //   Response.genQuickReply("Which topic do you want to start from?", [
+      //     {
+      //       title: "gender",
+      //       payload: "SURVEY_0_YES"
+      //     },
+      //     {
+      //       title: "race",
+      //       payload: "SURVEY_0_YES"
+      //     },
+      //     {
+      //       title: "personality",
+      //       payload: "SURVEY_0_YES"
+      //     },
+      //     {
+      //       title: "temperature",
+      //       payload: "SURVEY_0_YES"
+      //     }
+      //   ]
+      //   )
+      // ];
+      response = Response.genNuxMessage(this.user);
+
     }
 
     return response;
