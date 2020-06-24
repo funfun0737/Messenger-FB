@@ -128,10 +128,10 @@ module.exports = class Survey {
                         `${config.appUrl}/2.png`,
                         i18n.__("examples of different gender expressions and possible labels"),
                         i18n.__("If you want to know more about this, check this website"),
-                            Response.genWebUrlButton(
+                        [Response.genWebUrlButton(
                             i18n.__("gender expression"),
                             `${config.shopUrl}`
-                        )
+                        )]
                     ),
 
                     Response.genQuickReply("Do you want to check the next dimension: Gender Identity ? ", [
