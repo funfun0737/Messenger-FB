@@ -88,10 +88,10 @@ module.exports = class Survey {
       case "1":
           return [
               Response.genImageTemplate(
-                  `${config.appUrl}/expression.png`,
+                  `${config.appUrl}/Expression.png`,
                   i18n.__("gender expression")
               ),
-              Response.genQuickReply("Rank your female-ness ", [
+              Response.genQuickReply("Please rank your female-ness ", [
             {
               title: "0",
               payload: "SURVEY_2_0"
@@ -99,9 +99,27 @@ module.exports = class Survey {
             {
               title: "1",
               payload: "SURVEY_2_1"
-            }])];
+            },
+                {
+                  title: "2",
+                  payload: "SURVEY_2_1"
+                },
+                {
+                  title: "3",
+                  payload: "SURVEY_2_1"
+                },
+                {
+                  title: "4",
+                  payload: "SURVEY_2_1"
+                },
+                {
+                  title: "5",
+                  payload: "SURVEY_2_1"
+                },
+
+            ])];
       case "2":
-        return Response.genQuickReply("Cool, would you like to talk to a counselor?", [
+        return Response.genQuickReply("This is the end of survey, if you have confusion, would you like to talk to a counselor?", [
             {
               title: "Sure",
               payload: "SURVEY_100_YES"
