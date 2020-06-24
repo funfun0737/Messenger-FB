@@ -30,13 +30,13 @@ module.exports = class Care {
               agentFirstName: config.personaCare.name,
               topic: i18n.__("care.order")
             }),
-            config.personaOrder.id
+            config.personaCare.id
           ),
           Response.genTextWithPersona(
             i18n.__("care.end"),
-            config.personaOrder.id
+            config.personaCare.id
           ),
-          Survey.genAgentRating(config.personaOrder.name)
+          Survey.genAgentRating(config.personaCare.name)
         ];
     }
 };
