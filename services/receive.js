@@ -37,14 +37,12 @@ module.exports = class Receive {
     try {
       if (event.message) {
         let message = event.message;
-        console.log("HZTest message "+message);
 
         if (message.quick_reply) {
           responses = this.handleQuickReply();
         } else if (message.attachments) {
           responses = this.handleAttachmentMessage();
         } else if (message.text) {
-          console.log("HZTest message.text "+message.text);
           responses = this.handleTextMessage();
         }
       } else if (event.postback) {
@@ -54,21 +52,16 @@ module.exports = class Receive {
       } else if (event.optin && event.optin.type == 'one_time_notif_req' && event.optin.payload == 'NOTIFY_ME') {
         // this.oneTimeToken = event.optin.one_time_notif_token;
         this.sendMessage(Response.genText(i18n.__("Ok!")));
-        // responses = Response.genText(i18n.__("Ok!"));
-        // console.log("YQTest" + event.optin.one_time_notif_token);
         let requestBody = {
           "recipient": {
             "one_time_notif_token": event.optin.one_time_notif_token
           },
           "message": {
-            "text": "Hi, we are connecting you to Rein!"
+            "text": "Hi, we have connected you to a counselor!"
           }
         }
         setTimeout(() => GraphAPi.callSendAPI(requestBody), 1000);
-        let care = new Care(this.user, this.webhookEvent);
         setTimeout(() => this.sendPassThread(this.user.psid), 1000);
-        responses = care.handlePayload();
-
       }
     } catch (error) {
       console.error(error);
@@ -99,7 +92,6 @@ module.exports = class Receive {
     let greeting = this.firstEntity(this.webhookEvent.message.nlp, "greetings");
 
     let message = this.webhookEvent.message.text.trim().toLowerCase();
-    console.log("HZTest message "+message);
 
     let response;
 
@@ -112,15 +104,13 @@ module.exports = class Receive {
       response = OneTime.sendOneTimeNoti();
     } else if (message.includes("survey")) {
       response = Survey.startASurvey();
-    } else if (Number(message)) {
-      response = Order.handlePayload("ORDER_NUMBER");
     } else if (message.includes(i18n.__("care.help").toLowerCase())) {
       let care = new Care(this.user, this.webhookEvent);
       response = care.handlePayload("CARE_HELP");
     } else {
       response = [
         Response.genText("Hi, I'm your friendly bot Sakura!"),
-        Response.genText("Let's find who you are!"),
+        Response.genText("Let's start the journey of finding who you are!"),
         Response.genQuickReply("Which topic do you want to start from?", [
           {
             title: "gender",
@@ -128,6 +118,14 @@ module.exports = class Receive {
           },
           {
             title: "race",
+            payload: "SURVEY_0"
+          },
+          {
+            title: "personality",
+            payload: "SURVEY_0"
+          },
+          {
+            title: "temperature",
             payload: "SURVEY_0"
           }
         ]
@@ -227,6 +225,7 @@ module.exports = class Receive {
     }if(payload=="SURVEY"){
       response = Survey.startASurvey();
     } else if (payload.startsWith("SURVEY")){
+      console.log("YQTEST" + payload);
       response = Survey.handlePayload(payload);
     } else{
       response = {
