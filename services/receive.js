@@ -59,13 +59,13 @@ module.exports = class Receive {
             "text": "Hi, we have connected you to a counselor!"
           }
         }
-        setTimeout(() => GraphAPi.callSendAPI(requestBody), 1000*20);
+        setTimeout(() => GraphAPi.callSendAPI(requestBody), 1000*10);
         let requestBody2 = {
           "message": {
             "text": "Hi, I am Jude! It's good to see you here!"
           }
         }
-        setTimeout(() => GraphAPi.callSendAPI(requestBody2), 1000*22);
+        setTimeout(() => GraphAPi.callSendAPI(requestBody2), 1000*11);
 
         setTimeout(() => this.sendPassThread(this.user.psid), 1000*30);
       }
