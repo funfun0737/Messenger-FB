@@ -56,18 +56,18 @@ module.exports = class Receive {
             "one_time_notif_token": event.optin.one_time_notif_token
           },
           "message": {
-            "text": "Hi, we have connected you to a counselor!"
+            "text": "Hi, we have connected you to a counselor, Jude! Do you want to talk with Jude now?"
           }
         }
-        setTimeout(() => GraphAPi.callSendAPI(requestBody), 1000*10);
-        let requestBody2 = {
-          "message": {
-            "text": "Hi, I am Jude! It's good to see you here!"
-          }
-        }
-        setTimeout(() => GraphAPi.callSendAPI(requestBody2), 1000*11);
+        setTimeout(() => GraphAPi.callSendAPI(requestBody), 1000*5);
+        // let requestBody2 = {
+        //   "message": {
+        //     "text": "Hi, I am Jude! It's good to see you here!"
+        //   }
+        // }
+        // setTimeout(() => GraphAPi.callSendAPI(requestBody2), 1000*11);
 
-        setTimeout(() => this.sendPassThread(this.user.psid), 1000*11);
+        setTimeout(() => this.sendPassThread(this.user.psid), 1000*5);
       }
     } catch (error) {
       console.error(error);
