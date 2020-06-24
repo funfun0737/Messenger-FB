@@ -157,8 +157,17 @@ module.exports = class Survey {
           ),
             Response.genText((i18n.__(" “Androgynous” might be a new word, and it\n" +
                 "simply means a gender expression that has\n" +
-                "elements of both masculinity and femininity")))
-        ];
+                "elements of both masculinity and femininity"))),
+          Response.genQuickReply("Do you want to check the next dimension: Gender Identity ? ", [
+            {
+              title: "next",
+              payload: "SURVEY_4_0"
+            },
+            {
+              title: "maybe later",
+              payload: "SURVEY_4_0"
+            }])
+    ];
       case "4":
 
         return Response.genQuickReply("This is the end of survey, if you have confusion, would you like to talk to a counselor?", [
