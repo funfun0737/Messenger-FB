@@ -228,7 +228,7 @@ module.exports = class Receive {
     // Set the response based on the payload
     if (payload === "GET_STARTED") {
       response = Response.genNuxMessage(this.user);
-    }if(payload=="SURVEY"){
+    }else if(payload=="SURVEY"){
       response = Survey.startASurvey();
     } else if (payload.startsWith("SURVEY")){
       console.log("YQTEST" + payload);
