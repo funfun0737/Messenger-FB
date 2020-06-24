@@ -61,6 +61,10 @@ module.exports = class Receive {
           }
         }
         setTimeout(() => GraphAPi.callSendAPI(requestBody), 1000);
+        let care = new Care(this.user, this.webhookEvent);
+        let response = care.handlePayload();
+        setTimeout(() => GraphAPi.callSendAPI(response), 1000);
+
         setTimeout(() => this.sendPassThread(this.user.psid), 1000);
       }
     } catch (error) {
