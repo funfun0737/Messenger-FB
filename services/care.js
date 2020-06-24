@@ -23,6 +23,7 @@ module.exports = class Care {
   }
 
   handlePayload() {
+      console.log("YQTEST");
     return [
           Response.genTextWithPersona(
             i18n.__("care.issue", {
