@@ -227,7 +227,30 @@ module.exports = class Receive {
 
     // Set the response based on the payload
     if (payload === "GET_STARTED") {
-      response = Response.genNuxMessage(this.user);
+      // response = Response.genNuxMessage(this.user);
+      response = [
+        Response.genText("Hi, I'm your friendly bot Sakura!"),
+        Response.genText("Let's start the journey of finding who you are!"),
+        Response.genQuickReply("Which topic do you want to start from?", [
+              {
+                title: "gender",
+                payload: "SURVEY_0_YES"
+              },
+              {
+                title: "race",
+                payload: "SURVEY_0_YES"
+              },
+              {
+                title: "personality",
+                payload: "SURVEY_0_YES"
+              },
+              {
+                title: "temperature",
+                payload: "SURVEY_0_YES"
+              }
+            ]
+        )
+      ];
     }if(payload=="SURVEY"){
       response = Survey.startASurvey();
     } else if (payload.startsWith("SURVEY")){
