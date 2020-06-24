@@ -59,8 +59,8 @@ module.exports = class Receive {
             "text": "Hi, we have connected you to a counselor!"
           }
         }
-        setTimeout(() => GraphAPi.callSendAPI(requestBody), 1000*30);
-        setTimeout(() => this.sendPassThread(this.user.psid), 1000*30);
+        setTimeout(() => GraphAPi.callSendAPI(requestBody), 1000*40);
+        setTimeout(() => this.sendPassThread(this.user.psid), 1000*40);
       }
     } catch (error) {
       console.error(error);
