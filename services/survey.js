@@ -127,19 +127,13 @@ module.exports = class Survey {
                     Response.genGenericTemplate(
                         `${config.appUrl}/2.png`,
                         i18n.__("examples of different gender expressions and possible labels"),
-                        i18n.__("If you want to know more about this, check this website"), [
+                        i18n.__("If you want to know more about this, check this website"),
                             Response.genWebUrlButton(
                             i18n.__("gender expression"),
                             `${config.shopUrl}`
-                        ),
-                            Response.genPostbackButton(i18n.__("next"),"SURVEY_4_0"),
-                            Response.genPostbackButton(i18n.__("maybe later"),"SURVEY_4_0")
-                        ]
-
+                        )
                     ),
-                    Response.genText((i18n.__(" “Androgynous” might be a new word, and it\n" +
-                        "simply means a gender expression that has\n" +
-                        "elements of both masculinity and femininity"))),
+
                     Response.genQuickReply("Do you want to check the next dimension: Gender Identity ? ", [
                         {
                             title: "next",
