@@ -66,7 +66,7 @@ module.exports = class Survey {
                         `${config.appUrl}/1.png`,
                         i18n.__("we invite you to rank femaleness and maleness using two continuums"),
                     ),
-                    Response.genQuickReply("First, please rank female-ness ", [
+                    Response.genQuickReply("First, please rank your female-ness ", [
                         {
                             title: "0",
                             payload: "SURVEY_2_0"
@@ -95,7 +95,7 @@ module.exports = class Survey {
                     ])];
             case "2":
                 return [
-                    Response.genQuickReply("Please rank male-ness ", [
+                    Response.genQuickReply("Please rank your male-ness ", [
                         {
                             title: "0",
                             payload: "SURVEY_3_0"
@@ -146,7 +146,7 @@ module.exports = class Survey {
                 ];
             case "4":
 
-                return Response.genQuickReply("This is the end of survey, if you have confusion, would you like to talk to a counselor?", [
+                return Response.genQuickReply("This is the end of survey, would you like to talk to a counselor?", [
                     {
                         title: "Sure",
                         payload: "SURVEY_100_YES"

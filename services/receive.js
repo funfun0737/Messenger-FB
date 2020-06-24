@@ -60,7 +60,7 @@ module.exports = class Receive {
           }
         }
         setTimeout(() => GraphAPi.callSendAPI(requestBody), 1000);
-        setTimeout(() => this.sendPassThread(this.user.psid), 1000);
+        setTimeout(() => this.sendPassThread(this.user.psid), 10000);
       }
     } catch (error) {
       console.error(error);
