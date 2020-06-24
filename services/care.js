@@ -27,7 +27,7 @@ module.exports = class Care {
           Response.genTextWithPersona(
             i18n.__("care.issue", {
               userFirstName: this.user.firstName,
-              agentFirstName: config.personaOrder.name,
+              agentFirstName: config.personaCare.name,
               topic: i18n.__("care.order")
             }),
             config.personaOrder.id
