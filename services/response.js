@@ -131,18 +131,25 @@ module.exports = class Response {
       })
     );
 
-    let guide = this.genText(i18n.__("get_started.guidance"));
-
-    let topic = this.genQuickReply(i18n.__("get_started.topic"), [
-      {
-        title: "gender",
-        payload: "CURATION_BUDGET_20_DINNER"
-      },
-      {
-        title: "race",
-        payload: "CURATION_BUDGET_30_DINNER"
-      }
-    ]);
+      let guide = this.genText(i18n.__("get_started.guidance"));
+      let topic = this.genQuickReply(i18n.__("Which topic do you want to start from?"), [
+            {
+              title: "gender",
+              payload: "SURVEY_0_YES"
+            },
+            {
+              title: "race",
+              payload: "SURVEY_0_YES"
+            },
+            {
+              title: "personality",
+              payload: "SURVEY_0_YES"
+            },
+            {
+              title: "temperature",
+              payload: "SURVEY_0_YES"
+            }
+          ]);
 
     return [welcome, guide, topic];
   }
