@@ -130,7 +130,7 @@ module.exports = class Survey {
                         i18n.__("If you want to know more about this, check this website"),
                         [Response.genWebUrlButton(
                             i18n.__("gender expression"),
-                            `${config.shopUrl}`
+                            `https://www.genderbread.org/wp-content/uploads/2017/02/Breaking-through-the-Binary-by-Sam-Killermann.pdf`
                         )]
                     ),
 
