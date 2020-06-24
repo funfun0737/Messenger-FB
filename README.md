@@ -2,7 +2,7 @@
 
 
 # Inspiration
-Who Am I messenger bot is created to facilitate the sex education, the motivation behind is my mental health teacher experience. In my class and many other places, talking about sex is like a taboo despite of the fact that it is a part of us human being. This website https://www.genderbread.org/  shares a great teaching tool to help people understand and tackle this 'tough' subject. A chatbot that provides resources and support in an interactive way can help eliminate the shame and benefit more people.
+Who Am I messenger bot is created to facilitate the mental health education, the motivation behind is my mental health teacher experience. For the lack of time, I only focus on sex education in this hackthon. In my class and many other places, talking about sex is like a taboo despite of the fact that it is a part of us human being. This website https://www.genderbread.org/  shares a great teaching tool to help people understand and tackle this 'tough' subject. A chatbot that provides resources and support in an interactive way can help eliminate the shame and benefit more people.
 
 # What it does
 Who Am I messenger bot will:
