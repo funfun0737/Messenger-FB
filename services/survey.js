@@ -150,7 +150,14 @@ module.exports = class Survey {
         ])];
       case "3":
         return [
+          Response.genImageTemplate(
+              `${config.appUrl}/2.png`,
+              i18n.__("examples of different gender expressions and possible labels"),
 
+          ),
+            Response.genText((i18n.__(" “Androgynous” might be a new word, and it\n" +
+                "simply means a gender expression that has\n" +
+                "elements of both masculinity and femininity")))
         ];
       case "4":
 
