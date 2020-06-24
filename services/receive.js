@@ -114,19 +114,19 @@ module.exports = class Receive {
         Response.genQuickReply("Which topic do you want to start from?", [
           {
             title: "gender",
-            payload: "SURVEY_0"
+            payload: "SURVEY_0_0"
           },
           {
             title: "race",
-            payload: "SURVEY_0"
+            payload: "SURVEY_0_0"
           },
           {
             title: "personality",
-            payload: "SURVEY_0"
+            payload: "SURVEY_0_0"
           },
           {
             title: "temperature",
-            payload: "SURVEY_0"
+            payload: "SURVEY_0_0"
           }
         ]
         )

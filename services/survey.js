@@ -119,6 +119,40 @@ module.exports = class Survey {
 
             ])];
       case "2":
+        return [
+            Response.genQuickReply("Please rank your male-ness ", [
+          {
+            title: "0",
+            payload: "SURVEY_3_0"
+          },
+          {
+            title: "1",
+            payload: "SURVEY_3_1"
+          },
+          {
+            title: "2",
+            payload: "SURVEY_3_1"
+          },
+          {
+            title: "3",
+            payload: "SURVEY_3_1"
+          },
+          {
+            title: "4",
+            payload: "SURVEY_3_1"
+          },
+          {
+            title: "5",
+            payload: "SURVEY_3_1"
+          },
+
+        ])];
+      case "3":
+        return [
+
+        ];
+      case "4":
+
         return Response.genQuickReply("This is the end of survey, if you have confusion, would you like to talk to a counselor?", [
             {
               title: "Sure",
